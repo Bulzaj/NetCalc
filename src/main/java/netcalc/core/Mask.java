@@ -33,7 +33,13 @@ public class Mask {
         octets = new ArrayList<>();
         initializeOctets();
         for (Octet octet:octets) {
-            binaryValue +=Integer.toBinaryString(octet.getValue());
+            int i=0;
+            if (i < 3) {
+                binaryValue +=Integer.toBinaryString(octet.getValue()) + ".";
+            } else {
+                binaryValue +=Integer.toBinaryString(octet.getValue());
+            }
+
         }
     }
 

@@ -2,23 +2,26 @@ package netcalc.core;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class NetcalcJSON {
+public class NetcalcJSONBuilder {
 
     private Netcalc netcalc;
     private Map<String, String> netcalcMap;
-    private Gson gson;
-    private String json;
 
-    public NetcalcJSON(Netcalc netcalc) {
+    public NetcalcJSONBuilder(Netcalc netcalc) {
         this.netcalc = netcalc;
-        netcalcMap = new HashMap<>();
-        gson = new Gson();
-        json = gson.toJson(netcalcMap);
+        netcalcMap = new LinkedHashMap<>();
         initMap();
+    }
+
+    public String buildJson() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(netcalcMap);
     }
 
     private void initMap() {
@@ -37,6 +40,7 @@ public class NetcalcJSON {
         netcalcMap.put("Last host address", netcalc.getLastHostAddress().toString());
         netcalcMap.put("Binary last host address", netcalc.getLastHostAddress().getAsBinary());
         netcalcMap.put("Subnets number", ""+netcalc.getSubnetsNumber());
+        netcalcMap.put("Is Address a private Number", ""+netcalc.isPrivateNet());
     }
 
     public Map<String, String> getNetcalcMap() {

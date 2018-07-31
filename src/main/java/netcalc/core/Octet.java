@@ -23,4 +23,9 @@ public class Octet {
     public String getBinaryValue() {
         return binaryValue;
     }
+
+    @Override
+    public String toString() {
+        return ""+value;
+    }
 }
