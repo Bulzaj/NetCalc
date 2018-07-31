@@ -73,10 +73,17 @@ public class Ipv4Address {
     @Override
     public String toString() {
         String result = "";
-        for (Octet octet : octets) {
-            result += octet.getValue() + ".";
-        }
-        result += "/"+mask.getMaskValue();
+        result += octet1.toString() + "." +
+                octet2.toString() + "." +
+                octet3.toString() + "." +
+                octet4.toString();
         return result;
+    }
+
+    public String getAsBinary() {
+        return octet1.getBinaryValue() + "." +
+                octet2.getBinaryValue() + "." +
+                octet3.getBinaryValue() + "." +
+                octet4.getBinaryValue();
     }
 }

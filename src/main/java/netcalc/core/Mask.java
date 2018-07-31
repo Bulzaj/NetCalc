@@ -56,4 +56,16 @@ public class Mask {
     public String getBinaryValue() {
         return binaryValue;
     }
+
+    @Override
+    public String toString() {
+        String result = "";
+        for (Octet octet : octets) {
+            result += octet.getValue();
+            if (octet.getId() !=4) {
+                result += ".";
+            }
+        }
+        return result;
+    }
 }
